@@ -137,14 +137,25 @@
   .proj.hidden{display:none}
 
   /* CTA section */
-  .cta{background:linear-gradient(135deg,var(--panel),var(--line));border:1px solid var(--line);border-radius:12px;padding:40px;text-align:center;margin-top:48px}
-  .cta h2{font-family:var(--sans);font-size:28px;font-weight:700;margin-bottom:12px;color:var(--ink)}
-  .cta p{font-size:15px;color:var(--mut);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
-  .cta-btn{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--bg);background:var(--acc);padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:.15s}
-  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(91,241,164,.3)}
-  .cta-links{margin-top:20px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .cta-links a{font-family:var(--mono);font-size:12px;color:var(--mut);text-decoration:none;transition:.15s}
+  .cta{background:linear-gradient(135deg,var(--panel),var(--line));border:1px solid var(--line);border-radius:12px;padding:40px;text-align:center;margin-bottom:32px;position:relative;overflow:hidden}
+  .cta::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(91,241,164,.1) 0%,transparent 50%);animation:rotate 20s linear infinite}
+  @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .cta-content{position:relative;z-index:1}
+  .cta h2{font-family:var(--sans);font-size:28px;font-weight:700;margin-bottom:12px;color:var(--ink);animation:fadeInUp .6s ease-out}
+  .cta p{font-size:15px;color:var(--mut);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;animation:fadeInUp .6s ease-out .1s backwards}
+  .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+  .cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--bg);background:var(--acc);padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;animation:fadeInUp .6s ease-out .2s backwards}
+  .cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:.5s}
+  .cta-btn:hover::before{left:100%}
+  .cta-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 24px rgba(91,241,164,.4)}
+  .cta-btn.secondary{color:var(--ink);background:transparent;border:1px solid var(--line);animation:fadeInUp .6s ease-out .3s backwards}
+  .cta-btn.secondary:hover{border-color:var(--acc);color:var(--acc);box-shadow:0 8px 24px rgba(91,241,164,.2)}
+  .cta-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .6s ease-out .4s backwards}
+  .cta-links a{font-family:var(--mono);font-size:12px;color:var(--mut);text-decoration:none;transition:.15s;position:relative}
+  .cta-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--acc);transition:.3s}
+  .cta-links a:hover::after{width:100%}
   .cta-links a:hover{color:var(--acc)}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
   /* resume button */
   .resume-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--mut);border:1px solid var(--line);padding:8px 16px;border-radius:8px;text-decoration:none;transition:.15s;margin-top:8px}
@@ -184,10 +195,6 @@
       <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">github.com/infoshubhjain</a>
       <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">linkedin.com/in/infoshubhjain</a>
       <span>UIUC CS '29 · GPA 3.83 · James Scholar · Dean's List</span>
-      <a href="resume.pdf" class="resume-btn" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        Download Resume
-      </a>
     </div>
     <div class="stats">
       <div class="stat"><div class="n">1,000+</div><div class="l">daily users shipped</div></div>
@@ -196,6 +203,27 @@
       <div class="stat"><div class="n">17</div><div class="l">MUN awards won</div></div>
     </div>
   </header>
+
+  <section id="contact" class="cta rv-el">
+    <div class="cta-content">
+      <h2>Let's build something together</h2>
+      <p>I'm always open to discussing new projects, research opportunities, or just having a great conversation about technology.</p>
+      <div class="cta-buttons">
+        <a href="mailto:shubhj3@illinois.edu" class="cta-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Get in Touch
+        </a>
+        <a href="resume.pdf" class="cta-btn secondary" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Download Resume
+        </a>
+      </div>
+      <div class="cta-links">
+        <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
   <section id="projects">
     <div class="sec-h rv-el">featured projects</div>
@@ -378,17 +406,6 @@
         <div class="dt">2023</div>
         <div class="de">Intensive one-month practical AI/ML program.</div>
       </div>
-    </div>
-  </section>
-
-  <section id="contact" class="cta rv-el">
-    <h2>Let's build something together</h2>
-    <p>I'm always open to discussing new projects, research opportunities, or just having a great conversation about technology.</p>
-    <a href="mailto:shubhj3@illinois.edu" class="cta-btn">Get in Touch</a>
-    <div class="cta-links">
-      <a href="mailto:shubhj3@illinois.edu">shubhj3@illinois.edu</a>
-      <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </section>
 
