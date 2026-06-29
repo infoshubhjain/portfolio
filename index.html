@@ -112,64 +112,135 @@
   <header>
     <div class="kicker">~/shubh &mdash; status: shipping<span class="blink"></span></div>
     <h1>Shubh Jain<span class="dim">.</span></h1>
-    <div class="tag">I build fast and ship real things. <b>6+ products, 2 papers, 1 patent</b> &mdash; before sophomore year.</div>
+    <div class="tag">I ship products, publish research, and lead at scale. <b>$24K+ raised, 2,200+ taught, 17 MUN awards</b> &mdash; before sophomore year.</div>
     <div class="meta">
       <a href="mailto:shubhj3@illinois.edu">shubhj3@illinois.edu</a>
+      <a href="tel:+12179795689">+1 217-979-5689</a>
       <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">github.com/infoshubhjain</a>
       <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">linkedin.com/in/infoshubhjain</a>
-      <span>UIUC &mdash; CS &mdash; GPA 3.83</span>
+      <span>UIUC CS '29 · GPA 3.83 · James Scholar · Dean's List</span>
     </div>
     <div class="stats">
       <div class="stat"><div class="n">1,000+</div><div class="l">daily users shipped</div></div>
-      <div class="stat"><div class="n">31</div><div class="l">person team led</div></div>
-      <div class="stat"><div class="n">2</div><div class="l">papers published</div></div>
+      <div class="stat"><div class="n">2,200+</div><div class="l">students taught</div></div>
       <div class="stat"><div class="n">$24K+</div><div class="l">raised for impact</div></div>
+      <div class="stat"><div class="n">17</div><div class="l">MUN awards won</div></div>
     </div>
   </header>
 
   <section>
-    <div class="sec-h rv-el">things i've built</div>
+    <div class="sec-h rv-el">featured projects</div>
 
     <a class="proj rv-el" href="https://aiceuiuc.vercel.app" target="_blank" rel="noopener">
-      <div class="ptop"><div class="pname">AICE &mdash; AI Adaptive Learning Platform<span class="arrow">live &rarr;</span></div><div class="pyear">2026</div></div>
-      <div class="ptag">7-agent backend · knowledge-tracing engine from scratch</div>
-      <div class="pbody">Shipped a full AI tutoring platform with a Bayesian Knowledge Tracing engine I wrote from scratch, hitting <span class="hl">80% accuracy</span> estimating learner skill and adapting every question in real time. OpenAI wired across agents for live roadmaps, quizzes, and tutoring.</div>
+      <div class="ptop"><div class="pname">AICE &mdash; AI Adaptive Learning Platform<span class="arrow">live &rarr;</span></div><div class="pyear">2025&ndash;26</div></div>
+      <div class="ptag">7-agent backend · Bayesian Knowledge Tracing from scratch</div>
+      <div class="pbody">Architected a full-stack adaptive learning platform with a multi-agent backend orchestrating 7 specialized AI agents. Implemented a Bayesian Knowledge Tracing engine from scratch that models per-skill mastery probabilities, hitting <span class="hl">80% accuracy</span> in estimating learner skill. Deployed on Vercel + Cloud Run with Supabase persistence.</div>
       <div class="pstack"><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">OpenAI</span><span class="chip">Supabase</span><span class="chip">pgvector</span><span class="chip">Docker</span></div>
     </a>
 
     <div class="proj rv-el">
-      <div class="ptop"><div class="pname">Project Harvest &mdash; Dining Analytics</div><div class="pyear">2026</div></div>
-      <div class="ptag">real product, real users</div>
-      <div class="pbody">Built and shipped a dining analytics app <span class="hl">1,000+ students use daily</span>, with Selenium scrapers and GitHub Actions CI/CD automating data and cutting manual upkeep <span class="hl">90%</span>.</div>
-      <div class="pstack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">Python</span><span class="chip">CI/CD</span></div>
+      <div class="ptop"><div class="pname">Project Harvest &mdash; Dining Analytics</div><div class="pyear">2025&ndash;Present</div></div>
+      <div class="ptag">1,000+ daily users · 90% manual work eliminated</div>
+      <div class="pbody">Built a full-stack ecosystem for 4 dining halls with React, Python scrapers, and Node.js API. <span class="hl">1,000+ students use it daily</span> to view calories, macros, allergens. Implemented CI/CD via GitHub Actions automating daily scraping, validation, and deployment—cutting manual maintenance by <span class="hl">90%</span>.</div>
+      <div class="pstack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">Selenium</span><span class="chip">CI/CD</span></div>
     </div>
 
     <div class="proj rv-el">
       <div class="ptop"><div class="pname">SIGAIDA Campus Energy &mdash; Air Quality Forecasting</div><div class="pyear">2025</div></div>
-      <div class="ptag">team lead, 10 people</div>
-      <div class="pbody">Led 10 people to ship an environmental platform powered by a PyTorch LSTM forecasting PM2.5 24h out at <span class="hl">92% accuracy</span>, fed by ETL pipelines unifying 4 live satellite and sensor sources.</div>
+      <div class="ptag">team lead · 10 people · 92% forecasting accuracy</div>
+      <div class="pbody">Led 10 people to ship an environmental platform powered by a PyTorch LSTM forecasting PM2.5 24 hours ahead at <span class="hl">92% accuracy</span>. Built automated ETL pipelines integrating 4+ external data sources (OpenAQ, Open-Meteo, Google Earth Engine, GTFS) into unified schemas.</div>
       <div class="pstack"><span class="chip">PyTorch</span><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">ETL</span></div>
     </div>
 
     <div class="proj rv-el">
-      <div class="ptop"><div class="pname">neuro-rust &mdash; Neural Net From Scratch in Rust</div><div class="pyear">2026</div></div>
-      <div class="ptag">zero ML libraries · the flex</div>
-      <div class="pbody">Built a feedforward neural network in <span class="hl">pure Rust</span> using only ndarray and rand &mdash; hand-derived backprop, Xavier init, SGD. Learns XOR in 10k epochs, ships with 15 tests against hand-computed gradients.</div>
+      <div class="ptop"><div class="pname">neuro-rust &mdash; Neural Net From Scratch</div><div class="pyear">2026</div></div>
+      <div class="ptag">zero ML libraries · pure Rust · 15 unit tests</div>
+      <div class="pbody">Built a feedforward neural network in <span class="hl">pure Rust</span> using only ndarray and rand—hand-derived backprop, Xavier/Glorot init, sigmoid activation, SGD. Successfully learns XOR in 10k epochs. Ships with 15 unit tests covering exact weight updates via hand-computed gradients.</div>
       <div class="pstack"><span class="chip">Rust</span><span class="chip">ndarray</span><span class="chip">backprop by hand</span></div>
     </div>
 
     <div class="proj rv-el">
-      <div class="ptop"><div class="pname">BERT Ad Compliance Classifier</div><div class="pyear">2025&ndash;26</div></div>
-      <div class="ptag">REVAMP UIUC × Llama Naturals</div>
-      <div class="pbody">Built the DistilBERT preprocessing and tokenization pipeline detecting FDA/FTC ad violations across 15 categories, expanding the training corpus <span class="hl">5.3×</span> and defining the schema the whole team built on.</div>
-      <div class="pstack"><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">DistilBERT</span><span class="chip">NLP</span></div>
-    </div>
-
-    <div class="proj rv-el">
       <div class="ptop"><div class="pname">Project Helix &mdash; Event Aggregator</div><div class="pyear">2025</div></div>
-      <div class="ptag">team lead</div>
-      <div class="pbody">Shipped an aggregator unifying <span class="hl">1,000+ events</span> from 15+ sources through a multi-technique scraping pipeline with OAuth2 Google Calendar export.</div>
+      <div class="ptag">1,000+ events · 15+ sources · OAuth2 integration</div>
+      <div class="pbody">Shipped a campus event aggregation platform unifying <span class="hl">1,000+ events</span> from 15+ university sources. Engineered multi-technique scraping pipeline (BeautifulSoup + Playwright) for static and JS-rendered sources. Implemented OAuth2-based Google Calendar export for authenticated users.</div>
       <div class="pstack"><span class="chip">Playwright</span><span class="chip">BeautifulSoup</span><span class="chip">OAuth2</span><span class="chip">REST</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h rv-el">research & publications</div>
+    <div class="rv-el">
+      <div class="row">
+        <div><div class="ti">BERT Ad Compliance Classifier</div><div class="or">Llama Naturals × REVAMP UIUC</div></div>
+        <div class="dt">Jan 2025&ndash;May 2026</div>
+        <div class="de">Built DistilBERT preprocessing pipeline detecting FDA/FTC ad violations across 15 categories. Expanded training corpus <span class="hl">5.3×</span> (10→53 samples) while maintaining balanced class distribution. Defined canonical dataset schema adopted project-wide.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">IoT-Based Precision Agriculture System</div><div class="or">Patent Granted</div></div>
+        <div class="dt">June 2024</div>
+        <div class="de">Designed and patented comprehensive IoT system enabling real-time monitoring of soil, crop, water, and environmental parameters. Integrated sensor networks, automated irrigation control, and predictive analytics for optimized yield.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Comparative Assessment of Conversational AI</div><div class="or">IJETAE Published</div></div>
+        <div class="dt">June 2024</div>
+        <div class="de">Conducted comprehensive analysis evaluating ChatGPT, Gemini, Perplexity, and Claude across factual accuracy, relevance, coherence, creativity, and bias. Revealed significant performance variations across diverse question types.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">ChatGPT Common-Sense Reasoning Analysis</div><div class="or">IJETAE · Best Junior Author ($1,000)</div></div>
+        <div class="dt">Sep 2023</div>
+        <div class="de">Developed questionnaire evaluating ChatGPT's common-sense reasoning, identifying high error rates in fundamental factual knowledge. <span class="hl">Most downloaded high school-authored paper</span> in journal history. Awarded Best Junior Author of the Year 2023.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Beyond the Black Box: Explainable AI</div><div class="or">Authored Book</div></div>
+        <div class="dt">May 2025</div>
+        <div class="de">Investigated black-box problem in AI, presenting methods including post-hoc interpretability, counterfactual reasoning, rule-based models, and surrogate modeling. Applied XAI techniques to healthcare, finance, and autonomous vehicles.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">IoT in Agriculture: Revolutionizing Indian Farming</div><div class="or">Authored Book · ISBN: 978-9394351950</div></div>
+        <div class="dt">Nov 2024</div>
+        <div class="de">Explored IoT applications in Indian agriculture addressing climate change, water scarcity, soil degradation. Distributed <span class="hl">500+ copies</span> to universities. Recognized by Governor of Madhya Pradesh for contribution to agricultural innovation.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h rv-el">leadership & impact</div>
+    <div class="rv-el">
+      <div class="row">
+        <div><div class="ti">Founder & President</div><div class="or">Project Uthaan</div></div>
+        <div class="dt">Dec 2022&ndash;Dec 2025</div>
+        <div class="de">Raised <span class="hl">$24,000+</span> through grants and corporate partnerships. Directed <span class="hl">200+ volunteers</span> across 6 cities. Built 8 classrooms, installed 100+ computers. Educated <span class="hl">2,200+ participants</span> through digital literacy and vocational skills programs.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Founder & President</div><div class="or">AI & STEM Club</div></div>
+        <div class="dt">Mar 2023&ndash;Mar 2025</div>
+        <div class="de">Established city's first AI & STEM lab with Raspberry Pi, Arduino, AI platforms. Built school's largest club (<span class="hl">80+ members</span>). Secured <span class="hl">$7,000+</span> annual funding. Won "Best Club Exhibition" among 50+ clubs.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Panels Head</div><div class="or">UI-CON · 2,000+ attendees</div></div>
+        <div class="dt">Oct 2025&ndash;Feb 2026</div>
+        <div class="de">Led panel programming for large-scale comic convention. Managed <span class="hl">60+ volunteers</span> across operations, registration, crowd management. Oversaw <span class="hl">20+ panels</span> with 40+ speakers. Directed <span class="hl">250+ volunteer hours</span>.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Management Head</div><div class="or">Diwali on the Quad · 1,000+ attendees</div></div>
+        <div class="dt">Oct 2025</div>
+        <div class="de">Directed operational planning for campus Diwali festival. Coordinated <span class="hl">30+ member volunteer team</span>. Managed <span class="hl">80+ volunteer hours</span>. Oversaw 10+ cultural performances across 4+ hour celebration.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Model United Nations</div><div class="or">17 Best Delegate Awards</div></div>
+        <div class="dt">Feb 2022&ndash;Nov 2024</div>
+        <div class="de">Chaired <span class="hl">8+ committees</span>, served as Secretary General for 2 MUNs with <span class="hl">700+ delegates</span>. Participated in <span class="hl">35+ MUNs</span>, winning <span class="hl">17 Best Delegate awards</span>. Trained junior chairs in parliamentary procedure and conflict resolution.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">CS Peer Mentor</div><div class="or">Siebel Center, UIUC</div></div>
+        <div class="dt">Jan 2026&ndash;Present</div>
+        <div class="de">Delivered <span class="hl">80+ one-on-one sessions</span> across CS 124, 128, 173, 225. Advised students on internship sourcing, research access, course sequencing. Identified recurring confusion patterns and developed clearer explanation frameworks.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Head of Operations</div><div class="or">SBI Sustainability Drive</div></div>
+        <div class="dt">Jun&ndash;Jul 2023</div>
+        <div class="de">Led <span class="hl">80-member team</span> with SBI, BHEL, and NGOs. Raised <span class="hl">$10,000+</span>, oversaw plantation of <span class="hl">18,000+ trees</span> across 6 acres. Managed media coverage and community engagement.</div>
+      </div>
     </div>
   </section>
 
@@ -184,34 +255,54 @@
   </section>
 
   <section>
-    <div class="sec-h rv-el">experience</div>
+    <div class="sec-h rv-el">work experience</div>
     <div class="rv-el">
       <div class="row">
-        <div><div class="ti">AI &amp; NLP Lead Researcher</div><div class="or">Exam Lounge</div></div>
+        <div><div class="ti">AI & NLP Lead Researcher</div><div class="or">Exam Lounge</div></div>
         <div class="dt">May&ndash;Aug 2024</div>
-        <div class="de">Led a <span class="hl">31-person</span> team shipping production ML under Agile &mdash; +15% accuracy, +20% performance, &minus;40% critical errors. Intern of the Month 3 of 4 months.</div>
+        <div class="de">Led cross-functional team of <span class="hl">31 interns</span> using Agile methodology. Improved exam model accuracy by <span class="hl">15%</span>, enhanced software performance by <span class="hl">20%</span>, reduced critical production errors by <span class="hl">40%</span>. Awarded "Intern of the Month" for 3 of 4 months.</div>
       </div>
       <div class="row">
         <div><div class="ti">Machine Learning Intern</div><div class="or">IETE</div></div>
         <div class="dt">Jun&ndash;Aug 2023</div>
-        <div class="de">BiLSTM at <span class="hl">87% accuracy</span> for misinformation detection, a real-time retraining pipeline, an AI chatbot handling 200+ daily queries, and a SQL sentiment system over 10,000+ reviews.</div>
+        <div class="de">Developed full-stack AI chatbot handling <span class="hl">200+ daily inquiries</span>. Built BiLSTM model with <span class="hl">87% accuracy</span> for misinformation detection. Created sentiment analysis tool processing <span class="hl">10,000+ reviews</span> using SQL. Completed capstone price prediction with <span class="hl">&lt;5% mean error</span>.</div>
       </div>
       <div class="row">
         <div><div class="ti">Freelance Web Developer</div><div class="or">Self-employed · 40+ clients</div></div>
-        <div class="dt">2023&ndash;2025</div>
-        <div class="de">Designed and shipped <span class="hl">40+ client sites</span> end to end &mdash; responsive UI/UX, e-commerce, booking systems, payment flows.</div>
+        <div class="dt">May 2023&ndash;May 2025</div>
+        <div class="de">Designed and developed <span class="hl">40+ websites</span> (Wix, Squarespace, HTML/CSS). Implemented SEO, responsive UI/UX, payment gateways, e-commerce, booking systems, and analytics. Managed complete project lifecycles from client consultation to launch.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Junior Editor-in-Chief</div><div class="or">MetroVaartha National Newspaper</div></div>
+        <div class="dt">Aug 2022&ndash;Aug 2023</div>
+        <div class="de">Authored "Artificial Intelligence: Blessing or Curse?" reaching <span class="hl">50,000+ readers</span>. Managed technology section, supervising team of junior editors. Boosted readership by <span class="hl">15%</span> within 6 months. Proofread and edited <span class="hl">200+ articles</span>.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Book Writing Assistant / Freelance Editor</div><div class="or">Self-employed</div></div>
+        <div class="dt">Mar 2023&ndash;May 2025</div>
+        <div class="de">Assisted in <span class="hl">10+ book projects</span> with research, drafting, and developmental feedback. Edited and proofread <span class="hl">300+ academic essays</span> across technical and scientific topics. Developed custom style guides and writing resources for authors.</div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="sec-h rv-el">recognition</div>
+    <div class="sec-h rv-el">education & honors</div>
     <div class="rv-el">
-      <div class="rec"><div class="rk">patent</div><div class="rv">IoT-Based Precision Agriculture System (2024)</div></div>
-      <div class="rec"><div class="rk">published</div><div class="rv">2 peer-reviewed papers on LLM evaluation (IJETAE) · Best Junior Author of the Year 2023 ($1,000)</div></div>
-      <div class="rec"><div class="rk">author</div><div class="rv"><em>Beyond the Black Box: Unlocking the Secrets of Explainable AI</em> (2025) · <em>IoT in Agriculture</em> (2024)</div></div>
-      <div class="rec"><div class="rk">founder</div><div class="rv">Project Uthaan &mdash; $24K+ raised, 200+ volunteers, 2,200+ students taught across 6 cities</div></div>
-      <div class="rec"><div class="rk">teaching</div><div class="rv">CS Peer Mentor &amp; CS 124 Tutor at UIUC &mdash; 80+ students across CS 124/128/173/225</div></div>
+      <div class="row">
+        <div><div class="ti">BS Computer Science</div><div class="or">University of Illinois Urbana-Champaign</div></div>
+        <div class="dt">Expected May 2029</div>
+        <div class="de">GPA <span class="hl">3.83/4.0</span> · James Scholar · Dean's List · CS Peer Mentor · CS 124 Assistant Tutor</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">IIT Delhi IHFC - Rancho Labs</div><div class="or">Summer Program</div></div>
+        <div class="dt">Summer</div>
+        <div class="de">Among <span class="hl">20 students selected nationwide</span>. Python fundamentals, linear regression projects, networking with IIT alumni.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">AI & ML Internship</div><div class="or">YBI Foundation</div></div>
+        <div class="dt">2023</div>
+        <div class="de">Intensive one-month practical AI/ML program.</div>
+      </div>
     </div>
   </section>
 
