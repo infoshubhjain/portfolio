@@ -16,6 +16,15 @@
     --mono:'SF Mono',ui-monospace,'JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
     --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
+  [data-theme="light"]{
+    --bg:#FAFAF7;
+    --panel:#FFFFFF;
+    --line:#E5E5E0;
+    --ink:#16181D;
+    --mut:#6B7280;
+    --acc:#1D4ED8;
+    --acc2:#B45309;
+  }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -103,9 +112,65 @@
   /* reveal */
   .rv-el{opacity:0;transform:translateY(14px);transition:.5s cubic-bezier(.2,.7,.2,1)}
   .rv-el.in{opacity:1;transform:none}
+
+  /* theme toggle */
+  .theme-toggle{position:fixed;top:20px;right:20px;z-index:1000;background:var(--panel);border:1px solid var(--line);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;color:var(--mut)}
+  .theme-toggle:hover{color:var(--acc);border-color:var(--acc)}
+  .theme-toggle svg{width:20px;height:20px}
+
+  /* mobile nav */
+  .mobile-toggle{display:none;position:fixed;top:20px;left:20px;z-index:1000;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px;cursor:pointer;transition:.2s;color:var(--mut)}
+  .mobile-toggle:hover{color:var(--acc);border-color:var(--acc)}
+  .mobile-toggle svg{width:24px;height:24px}
+  .nav-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:.3s}
+  .nav-overlay.open{opacity:1;pointer-events:auto}
+  .nav-overlay a{font-family:var(--mono);font-size:18px;color:var(--ink);text-decoration:none;transition:.15s}
+  .nav-overlay a:hover{color:var(--acc)}
+  @media(max-width:768px){.mobile-toggle{display:block}}
+
+  /* project filters */
+  .filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .filter-btn{font-family:var(--mono);font-size:11px;color:var(--mut);border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+  .filter-btn:hover{color:var(--ink);border-color:var(--mut)}
+  .filter-btn.active{color:var(--acc);border-color:var(--acc);background:var(--acc-soft)}
+  [data-theme="light"] .filter-btn.active{background:var(--acc-soft)}
+  .proj.hidden{display:none}
+
+  /* CTA section */
+  .cta{background:linear-gradient(135deg,var(--panel),var(--line));border:1px solid var(--line);border-radius:12px;padding:40px;text-align:center;margin-top:48px}
+  .cta h2{font-family:var(--sans);font-size:28px;font-weight:700;margin-bottom:12px;color:var(--ink)}
+  .cta p{font-size:15px;color:var(--mut);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+  .cta-btn{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--bg);background:var(--acc);padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;transition:.15s}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(91,241,164,.3)}
+  .cta-links{margin-top:20px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .cta-links a{font-family:var(--mono);font-size:12px;color:var(--mut);text-decoration:none;transition:.15s}
+  .cta-links a:hover{color:var(--acc)}
+
+  /* resume button */
+  .resume-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--mut);border:1px solid var(--line);padding:8px 16px;border-radius:8px;text-decoration:none;transition:.15s;margin-top:8px}
+  .resume-btn:hover{color:var(--acc);border-color:var(--acc)}
+  .resume-btn svg{width:14px;height:14px}
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+  <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+</button>
+
+<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+</button>
+
+<div class="nav-overlay" id="navOverlay">
+  <a href="#projects" onclick="closeNav()">Projects</a>
+  <a href="#research" onclick="closeNav()">Research</a>
+  <a href="#leadership" onclick="closeNav()">Leadership</a>
+  <a href="#experience" onclick="closeNav()">Experience</a>
+  <a href="#education" onclick="closeNav()">Education</a>
+  <a href="#contact" onclick="closeNav()">Contact</a>
+</div>
 
 <div class="wrap">
 
@@ -119,6 +184,10 @@
       <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">github.com/infoshubhjain</a>
       <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">linkedin.com/in/infoshubhjain</a>
       <span>UIUC CS '29 · GPA 3.83 · James Scholar · Dean's List</span>
+      <a href="resume.pdf" class="resume-btn" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Download Resume
+      </a>
     </div>
     <div class="stats">
       <div class="stat"><div class="n">1,000+</div><div class="l">daily users shipped</div></div>
@@ -128,38 +197,44 @@
     </div>
   </header>
 
-  <section>
+  <section id="projects">
     <div class="sec-h rv-el">featured projects</div>
+    <div class="filters rv-el">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI/ML</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+    </div>
 
-    <a class="proj rv-el" href="https://aiceuiuc.vercel.app" target="_blank" rel="noopener">
+    <a class="proj rv-el" href="https://aiceuiuc.vercel.app" target="_blank" rel="noopener" data-category="ai">
       <div class="ptop"><div class="pname">AICE &mdash; AI Adaptive Learning Platform<span class="arrow">live &rarr;</span></div><div class="pyear">2025&ndash;26</div></div>
       <div class="ptag">7-agent backend · Bayesian Knowledge Tracing from scratch</div>
       <div class="pbody">Architected a full-stack adaptive learning platform with a multi-agent backend orchestrating 7 specialized AI agents. Implemented a Bayesian Knowledge Tracing engine from scratch that models per-skill mastery probabilities, hitting <span class="hl">80% accuracy</span> in estimating learner skill. Deployed on Vercel + Cloud Run with Supabase persistence.</div>
       <div class="pstack"><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">OpenAI</span><span class="chip">Supabase</span><span class="chip">pgvector</span><span class="chip">Docker</span></div>
     </a>
 
-    <div class="proj rv-el">
+    <div class="proj rv-el" data-category="web">
       <div class="ptop"><div class="pname">Project Harvest &mdash; Dining Analytics</div><div class="pyear">2025&ndash;Present</div></div>
       <div class="ptag">1,000+ daily users · 90% manual work eliminated</div>
       <div class="pbody">Built a full-stack ecosystem for 4 dining halls with React, Python scrapers, and Node.js API. <span class="hl">1,000+ students use it daily</span> to view calories, macros, allergens. Implemented CI/CD via GitHub Actions automating daily scraping, validation, and deployment—cutting manual maintenance by <span class="hl">90%</span>.</div>
       <div class="pstack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">Selenium</span><span class="chip">CI/CD</span></div>
     </div>
 
-    <div class="proj rv-el">
+    <div class="proj rv-el" data-category="ai">
       <div class="ptop"><div class="pname">SIGAIDA Campus Energy &mdash; Air Quality Forecasting</div><div class="pyear">2025</div></div>
       <div class="ptag">team lead · 10 people · 92% forecasting accuracy</div>
       <div class="pbody">Led 10 people to ship an environmental platform powered by a PyTorch LSTM forecasting PM2.5 24 hours ahead at <span class="hl">92% accuracy</span>. Built automated ETL pipelines integrating 4+ external data sources (OpenAQ, Open-Meteo, Google Earth Engine, GTFS) into unified schemas.</div>
       <div class="pstack"><span class="chip">PyTorch</span><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">ETL</span></div>
     </div>
 
-    <div class="proj rv-el">
+    <div class="proj rv-el" data-category="research">
       <div class="ptop"><div class="pname">neuro-rust &mdash; Neural Net From Scratch</div><div class="pyear">2026</div></div>
       <div class="ptag">zero ML libraries · pure Rust · 15 unit tests</div>
       <div class="pbody">Built a feedforward neural network in <span class="hl">pure Rust</span> using only ndarray and rand—hand-derived backprop, Xavier/Glorot init, sigmoid activation, SGD. Successfully learns XOR in 10k epochs. Ships with 15 unit tests covering exact weight updates via hand-computed gradients.</div>
       <div class="pstack"><span class="chip">Rust</span><span class="chip">ndarray</span><span class="chip">backprop by hand</span></div>
     </div>
 
-    <div class="proj rv-el">
+    <div class="proj rv-el" data-category="web">
       <div class="ptop"><div class="pname">Project Helix &mdash; Event Aggregator</div><div class="pyear">2025</div></div>
       <div class="ptag">1,000+ events · 15+ sources · OAuth2 integration</div>
       <div class="pbody">Shipped a campus event aggregation platform unifying <span class="hl">1,000+ events</span> from 15+ university sources. Engineered multi-technique scraping pipeline (BeautifulSoup + Playwright) for static and JS-rendered sources. Implemented OAuth2-based Google Calendar export for authenticated users.</div>
@@ -167,7 +242,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="research">
     <div class="sec-h rv-el">research & publications</div>
     <div class="rv-el">
       <div class="row">
@@ -203,7 +278,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="leadership">
     <div class="sec-h rv-el">leadership & impact</div>
     <div class="rv-el">
       <div class="row">
@@ -254,7 +329,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="experience">
     <div class="sec-h rv-el">work experience</div>
     <div class="rv-el">
       <div class="row">
@@ -285,7 +360,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="education">
     <div class="sec-h rv-el">education & honors</div>
     <div class="rv-el">
       <div class="row">
@@ -306,6 +381,17 @@
     </div>
   </section>
 
+  <section id="contact" class="cta rv-el">
+    <h2>Let's build something together</h2>
+    <p>I'm always open to discussing new projects, research opportunities, or just having a great conversation about technology.</p>
+    <a href="mailto:shubhj3@illinois.edu" class="cta-btn">Get in Touch</a>
+    <div class="cta-links">
+      <a href="mailto:shubhj3@illinois.edu">shubhj3@illinois.edu</a>
+      <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
   <footer>
     <span>built by hand &mdash; like everything else <span class="grn">&#9632;</span></span>
     <span>Shubh Jain · 2026</span>
@@ -316,6 +402,46 @@
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.rv-el').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*40)+'ms';io.observe(el)});
+
+  // Theme toggle
+  const themeToggle=document.getElementById('themeToggle');
+  const moonIcon=document.getElementById('moonIcon');
+  const sunIcon=document.getElementById('sunIcon');
+  const savedTheme=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',savedTheme);
+  if(savedTheme==='light'){moonIcon.style.display='none';sunIcon.style.display='block'}
+  themeToggle.addEventListener('click',()=>{
+    const current=document.documentElement.getAttribute('data-theme');
+    const next=current==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+    moonIcon.style.display=next==='dark'?'block':'none';
+    sunIcon.style.display=next==='light'?'block':'none'
+  });
+
+  // Mobile nav
+  const mobileToggle=document.getElementById('mobileToggle');
+  const navOverlay=document.getElementById('navOverlay');
+  mobileToggle.addEventListener('click',()=>navOverlay.classList.toggle('open'));
+  function closeNav(){navOverlay.classList.remove('open')}
+
+  // Project filters
+  const filterBtns=document.querySelectorAll('.filter-btn');
+  const projects=document.querySelectorAll('.proj');
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter=btn.dataset.filter;
+      projects.forEach(proj=>{
+        if(filter==='all'||proj.dataset.category===filter){
+          proj.classList.remove('hidden');
+        }else{
+          proj.classList.add('hidden');
+        }
+      })
+    })
+  });
 </script>
 
 </body>
