@@ -3,168 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Elite Hackathon Resume — reference standard</title>
+<title>Shubh Jain — builds things</title>
 <style>
   :root{
-    --bg:#FAFAF7;--paper:#FFFFFF;--ink:#16181D;--mut:#6B7280;--soft:#9AA0AA;
-    --line:#E5E5E0;--acc:#1D4ED8;--acc-soft:#EFF4FF;--gold:#B45309;--gold-soft:#FEF6E7;
-    --serif:'Charter','Georgia',serif;--sans:'Inter',-apple-system,'Segoe UI',sans-serif;
-    --mono:ui-monospace,'SF Mono','JetBrains Mono',Menlo,monospace;
+    --bg:#0B0D10;
+    --panel:#111418;
+    --line:#1E2329;
+    --ink:#E8EAED;
+    --mut:#7C848D;
+    --acc:#5BF1A4;       /* electric ship-green */
+    --acc2:#FFB454;      /* amber for accents */
+    --mono:'SF Mono',ui-monospace,'JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);font-family:var(--sans);color:var(--ink);line-height:1.5;padding:28px 16px 70px}
-  .note{max-width:740px;margin:0 auto 22px;font-size:13.5px;color:var(--mut);font-family:var(--mono);
-    border-left:3px solid var(--acc);padding:10px 14px;background:var(--acc-soft);border-radius:0 6px 6px 0}
-  .note b{color:var(--acc)}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    -webkit-font-smoothing:antialiased;padding:0 20px 80px}
+  .wrap{max-width:860px;margin:0 auto}
 
-  .sheet{max-width:740px;margin:0 auto;background:var(--paper);border:1px solid var(--line);
-    border-radius:6px;padding:38px 44px 40px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  /* header */
+  header{padding:64px 0 28px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:18px}
+  .kicker .blink{display:inline-block;width:8px;height:14px;background:var(--acc);
+    margin-left:2px;vertical-align:-2px;animation:blink 1.1s steps(2) infinite}
+  @keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  h1{font-size:clamp(40px,9vw,76px);line-height:.95;letter-spacing:-.03em;font-weight:800}
+  h1 .dim{color:var(--mut)}
+  .tag{font-family:var(--mono);font-size:clamp(14px,2.4vw,18px);color:var(--ink);margin-top:20px;max-width:620px}
+  .tag b{color:var(--acc2);font-weight:400}
+  .meta{font-family:var(--mono);font-size:13px;color:var(--mut);margin-top:22px;display:flex;
+    flex-wrap:wrap;gap:6px 18px}
+  .meta a{color:var(--mut);text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+  .meta a:hover{color:var(--acc);border-color:var(--acc)}
 
-  /* head */
-  .nm{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:-.01em}
-  .tagline{font-size:13.5px;color:var(--ink);margin-top:4px}
-  .tagline b{color:var(--acc)}
-  .contact{font-family:var(--mono);font-size:11.5px;color:var(--mut);margin-top:9px;display:flex;flex-wrap:wrap;gap:4px 14px}
-  .contact a{color:var(--acc);text-decoration:none}
-  hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:30px 0 0}
+  .stat{background:var(--panel);padding:18px 16px}
+  .stat .n{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--acc)}
+  .stat .l{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+  @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
 
-  h2{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--soft);
-    margin:20px 0 11px;font-weight:600}
+  /* sections */
+  section{padding:42px 0 0}
+  .sec-h{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--mut);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .sec-h::before{content:'';width:6px;height:6px;background:var(--acc);border-radius:50%}
+  .sec-h::after{content:'';flex:1;height:1px;background:var(--line)}
 
-  /* award-forward entries */
-  .e{margin-bottom:15px}
-  .e-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-  .e-name{font-weight:650;font-size:14.5px}
-  .e-name .win{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:700;
-    color:var(--gold);background:var(--gold-soft);border:1px solid #F3DCA6;padding:1px 7px;border-radius:4px;
-    margin-right:8px;letter-spacing:.04em;vertical-align:1px}
-  .e-meta{font-family:var(--mono);font-size:11px;color:var(--mut);white-space:nowrap}
-  .e-sub{font-size:12.5px;color:var(--acc);font-family:var(--mono);margin:3px 0 6px}
-  ul{list-style:none}
-  li{font-size:13px;color:#2C2F36;padding-left:15px;position:relative;margin-bottom:4px}
-  li::before{content:'▸';position:absolute;left:0;color:var(--acc);font-size:11px;top:1px}
-  li .q{font-weight:650;color:var(--ink)}
+  /* project cards */
+  .proj{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:20px 22px;
+    margin-bottom:14px;transition:.18s;position:relative;overflow:hidden}
+  .proj::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc);
+    transform:scaleY(0);transform-origin:top;transition:.22s}
+  .proj:hover{border-color:#2C343C;transform:translateY(-2px)}
+  .proj:hover::before{transform:scaleY(1)}
+  .ptop{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .pname{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .pname .arrow{color:var(--acc);font-family:var(--mono);font-size:14px;opacity:0;transition:.18s;margin-left:6px}
+  .proj:hover .pname .arrow{opacity:1}
+  .pyear{font-family:var(--mono);font-size:12px;color:var(--mut)}
+  .ptag{font-family:var(--mono);font-size:12px;color:var(--acc2);margin:8px 0 10px}
+  .pbody{font-size:14.5px;color:#C3C9D0}
+  .pbody .hl{color:var(--acc);font-weight:600}
+  .pstack{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--mono);font-size:11px;color:var(--mut);border:1px solid var(--line);
+    padding:3px 9px;border-radius:999px}
+  a.proj{display:block;text-decoration:none;color:inherit}
 
-  .skills{font-size:12.5px;line-height:1.9}
-  .skills .k{font-family:var(--mono);font-size:11px;color:var(--soft);text-transform:uppercase;letter-spacing:.08em}
+  /* stack grid */
+  .stack-row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .stack-row:last-child{border-bottom:0}
+  .stack-k{font-family:var(--mono);font-size:12px;color:var(--acc);min-width:96px;text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+  .stack-v{font-family:var(--mono);font-size:13px;color:#C3C9D0;flex:1}
 
-  .why{max-width:740px;margin:26px auto 0}
-  .why h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
-  .why .card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:8px}
-  .why .card b{color:var(--ink)}
-  .why .card span{font-size:13px;color:var(--mut);display:block;margin-top:3px}
+  /* two-col list rows */
+  .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .row:last-child{border-bottom:0}
+  .row .ti{font-weight:600;font-size:15px}
+  .row .or{color:var(--mut);font-size:13.5px;margin-top:2px}
+  .row .dt{font-family:var(--mono);font-size:12px;color:var(--mut);white-space:nowrap}
+  .row .de{font-size:13.5px;color:#B7BDC4;flex-basis:100%;margin-top:6px}
+  .row .de .hl{color:var(--acc)}
+
+  /* recognition */
+  .rec{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .rec:last-child{border-bottom:0}
+  .rec .rk{font-family:var(--mono);font-size:11px;color:var(--acc2);text-transform:uppercase;
+    letter-spacing:.1em;min-width:104px;padding-top:3px}
+  .rec .rv{color:#C3C9D0;flex:1}
+
+  footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer .grn{color:var(--acc)}
+
+  /* reveal */
+  .rv-el{opacity:0;transform:translateY(14px);transition:.5s cubic-bezier(.2,.7,.2,1)}
+  .rv-el.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<div class="note">
-  <b>REFERENCE STANDARD &mdash; not your resume.</b> This is a fictional "perfect" candidate built to show every principle of an elite hackathon resume at full strength. Study the structure, then map your real material onto it. Notes on why each choice works are at the bottom.
+<div class="wrap">
+
+  <header>
+    <div class="kicker">~/shubh &mdash; status: shipping<span class="blink"></span></div>
+    <h1>Shubh Jain<span class="dim">.</span></h1>
+    <div class="tag">I build fast and ship real things. <b>6+ products, 2 papers, 1 patent</b> &mdash; before sophomore year.</div>
+    <div class="meta">
+      <a href="mailto:shubhj3@illinois.edu">shubhj3@illinois.edu</a>
+      <a href="https://github.com/infoshubhjain" target="_blank" rel="noopener">github.com/infoshubhjain</a>
+      <a href="https://linkedin.com/in/infoshubhjain" target="_blank" rel="noopener">linkedin.com/in/infoshubhjain</a>
+      <span>UIUC &mdash; CS &mdash; GPA 3.83</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">1,000+</div><div class="l">daily users shipped</div></div>
+      <div class="stat"><div class="n">31</div><div class="l">person team led</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">papers published</div></div>
+      <div class="stat"><div class="n">$24K+</div><div class="l">raised for impact</div></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-h rv-el">things i've built</div>
+
+    <a class="proj rv-el" href="https://aiceuiuc.vercel.app" target="_blank" rel="noopener">
+      <div class="ptop"><div class="pname">AICE &mdash; AI Adaptive Learning Platform<span class="arrow">live &rarr;</span></div><div class="pyear">2026</div></div>
+      <div class="ptag">7-agent backend · knowledge-tracing engine from scratch</div>
+      <div class="pbody">Shipped a full AI tutoring platform with a Bayesian Knowledge Tracing engine I wrote from scratch, hitting <span class="hl">80% accuracy</span> estimating learner skill and adapting every question in real time. OpenAI wired across agents for live roadmaps, quizzes, and tutoring.</div>
+      <div class="pstack"><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">OpenAI</span><span class="chip">Supabase</span><span class="chip">pgvector</span><span class="chip">Docker</span></div>
+    </a>
+
+    <div class="proj rv-el">
+      <div class="ptop"><div class="pname">Project Harvest &mdash; Dining Analytics</div><div class="pyear">2026</div></div>
+      <div class="ptag">real product, real users</div>
+      <div class="pbody">Built and shipped a dining analytics app <span class="hl">1,000+ students use daily</span>, with Selenium scrapers and GitHub Actions CI/CD automating data and cutting manual upkeep <span class="hl">90%</span>.</div>
+      <div class="pstack"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQLite</span><span class="chip">Python</span><span class="chip">CI/CD</span></div>
+    </div>
+
+    <div class="proj rv-el">
+      <div class="ptop"><div class="pname">SIGAIDA Campus Energy &mdash; Air Quality Forecasting</div><div class="pyear">2025</div></div>
+      <div class="ptag">team lead, 10 people</div>
+      <div class="pbody">Led 10 people to ship an environmental platform powered by a PyTorch LSTM forecasting PM2.5 24h out at <span class="hl">92% accuracy</span>, fed by ETL pipelines unifying 4 live satellite and sensor sources.</div>
+      <div class="pstack"><span class="chip">PyTorch</span><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">ETL</span></div>
+    </div>
+
+    <div class="proj rv-el">
+      <div class="ptop"><div class="pname">neuro-rust &mdash; Neural Net From Scratch in Rust</div><div class="pyear">2026</div></div>
+      <div class="ptag">zero ML libraries · the flex</div>
+      <div class="pbody">Built a feedforward neural network in <span class="hl">pure Rust</span> using only ndarray and rand &mdash; hand-derived backprop, Xavier init, SGD. Learns XOR in 10k epochs, ships with 15 tests against hand-computed gradients.</div>
+      <div class="pstack"><span class="chip">Rust</span><span class="chip">ndarray</span><span class="chip">backprop by hand</span></div>
+    </div>
+
+    <div class="proj rv-el">
+      <div class="ptop"><div class="pname">BERT Ad Compliance Classifier</div><div class="pyear">2025&ndash;26</div></div>
+      <div class="ptag">REVAMP UIUC × Llama Naturals</div>
+      <div class="pbody">Built the DistilBERT preprocessing and tokenization pipeline detecting FDA/FTC ad violations across 15 categories, expanding the training corpus <span class="hl">5.3×</span> and defining the schema the whole team built on.</div>
+      <div class="pstack"><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">DistilBERT</span><span class="chip">NLP</span></div>
+    </div>
+
+    <div class="proj rv-el">
+      <div class="ptop"><div class="pname">Project Helix &mdash; Event Aggregator</div><div class="pyear">2025</div></div>
+      <div class="ptag">team lead</div>
+      <div class="pbody">Shipped an aggregator unifying <span class="hl">1,000+ events</span> from 15+ sources through a multi-technique scraping pipeline with OAuth2 Google Calendar export.</div>
+      <div class="pstack"><span class="chip">Playwright</span><span class="chip">BeautifulSoup</span><span class="chip">OAuth2</span><span class="chip">REST</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h rv-el">stack</div>
+    <div class="rv-el">
+      <div class="stack-row"><div class="stack-k">languages</div><div class="stack-v">Python · TypeScript · JavaScript · Rust · C++ · Java · SQL · Kotlin</div></div>
+      <div class="stack-row"><div class="stack-k">ship fast</div><div class="stack-v">React · Next.js · Node.js · FastAPI · Supabase · PostgreSQL · Tailwind · Docker · Vercel · GitHub Actions</div></div>
+      <div class="stack-row"><div class="stack-k">ai / ml</div><div class="stack-v">PyTorch · HuggingFace · OpenAI API · LLM Agents · RAG · pgvector · DistilBERT · LSTMs</div></div>
+      <div class="stack-row"><div class="stack-k">data</div><div class="stack-v">Selenium · Playwright · BeautifulSoup · ETL · REST APIs · OAuth2</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h rv-el">experience</div>
+    <div class="rv-el">
+      <div class="row">
+        <div><div class="ti">AI &amp; NLP Lead Researcher</div><div class="or">Exam Lounge</div></div>
+        <div class="dt">May&ndash;Aug 2024</div>
+        <div class="de">Led a <span class="hl">31-person</span> team shipping production ML under Agile &mdash; +15% accuracy, +20% performance, &minus;40% critical errors. Intern of the Month 3 of 4 months.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Machine Learning Intern</div><div class="or">IETE</div></div>
+        <div class="dt">Jun&ndash;Aug 2023</div>
+        <div class="de">BiLSTM at <span class="hl">87% accuracy</span> for misinformation detection, a real-time retraining pipeline, an AI chatbot handling 200+ daily queries, and a SQL sentiment system over 10,000+ reviews.</div>
+      </div>
+      <div class="row">
+        <div><div class="ti">Freelance Web Developer</div><div class="or">Self-employed · 40+ clients</div></div>
+        <div class="dt">2023&ndash;2025</div>
+        <div class="de">Designed and shipped <span class="hl">40+ client sites</span> end to end &mdash; responsive UI/UX, e-commerce, booking systems, payment flows.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h rv-el">recognition</div>
+    <div class="rv-el">
+      <div class="rec"><div class="rk">patent</div><div class="rv">IoT-Based Precision Agriculture System (2024)</div></div>
+      <div class="rec"><div class="rk">published</div><div class="rv">2 peer-reviewed papers on LLM evaluation (IJETAE) · Best Junior Author of the Year 2023 ($1,000)</div></div>
+      <div class="rec"><div class="rk">author</div><div class="rv"><em>Beyond the Black Box: Unlocking the Secrets of Explainable AI</em> (2025) · <em>IoT in Agriculture</em> (2024)</div></div>
+      <div class="rec"><div class="rk">founder</div><div class="rv">Project Uthaan &mdash; $24K+ raised, 200+ volunteers, 2,200+ students taught across 6 cities</div></div>
+      <div class="rec"><div class="rk">teaching</div><div class="rv">CS Peer Mentor &amp; CS 124 Tutor at UIUC &mdash; 80+ students across CS 124/128/173/225</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>built by hand &mdash; like everything else <span class="grn">&#9632;</span></span>
+    <span>Shubh Jain · 2026</span>
+  </footer>
+
 </div>
 
-<div class="sheet">
-  <div class="nm">Alex Rivera</div>
-  <div class="tagline">I ship products that win. <b>5× hackathon winner</b> · 40K+ users across shipped projects.</div>
-  <div class="contact">
-    <span>alex@rivera.dev</span>
-    <a>github.com/arivera</a>
-    <a>arivera.dev</a>
-    <span>UC Berkeley · EECS · GPA 3.9</span>
-  </div>
-
-  <hr>
-
-  <h2>Hackathon Wins</h2>
-
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name"><span class="win">1ST / 1,200</span>Synapse &mdash; TreeHacks 2025 (Stanford)</div>
-      <div class="e-meta">Feb 2025</div>
-    </div>
-    <div class="e-sub">Grand Prize + Best Use of OpenAI · live demo ↗ · github ↗</div>
-    <ul>
-      <li>Built an <span class="q">AI surgical-notes copilot</span> that cut clinician charting time <span class="q">63%</span> in live testing, winning <span class="q">1st of 1,200</span> hackers and a $10K grand prize.</li>
-      <li>Shipped a working RAG pipeline over 12K medical documents in 36 hours using OpenAI, pgvector, and FastAPI.</li>
-    </ul>
-  </div>
-
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name"><span class="win">1ST TRACK</span>Relay &mdash; HackMIT 2024</div>
-      <div class="e-meta">Sep 2024</div>
-    </div>
-    <div class="e-sub">Best Hardware Hack · github ↗</div>
-    <ul>
-      <li>Led a team of 4 to build a <span class="q">sub-100ms</span> sign-language-to-speech glove, winning the hardware track of <span class="q">900+</span> participants.</li>
-      <li>Trained the gesture model to <span class="q">94% accuracy</span> on-device with a custom PyTorch CNN quantized for an ESP32.</li>
-    </ul>
-  </div>
-
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name"><span class="win">2ND / 250</span>Ledgerline &mdash; Cal Hacks 11.0</div>
-      <div class="e-meta">Oct 2024</div>
-    </div>
-    <div class="e-sub">Best Fintech Hack · 4,000 sign-ups in 48h · github ↗</div>
-    <ul>
-      <li>Built a real-time fraud-detection API that drove <span class="q">4,000 sign-ups in 48 hours</span> and placed 2nd of 250 teams.</li>
-    </ul>
-  </div>
-
-  <h2>Shipped Projects</h2>
-
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name">Mealwise &mdash; nutrition tracker</div>
-      <div class="e-meta">2024 · 32K users</div>
-    </div>
-    <div class="e-sub">React Native · Supabase · live on App Store ↗</div>
-    <ul>
-      <li>Designed, built, and shipped a nutrition app to <span class="q">32,000 real users</span> with a 4.7★ App Store rating.</li>
-    </ul>
-  </div>
-
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name">tinygrad-fork &mdash; from-scratch autograd engine</div>
-      <div class="e-meta">2024 · 800★</div>
-    </div>
-    <div class="e-sub">Python · the technical flex · github ↗</div>
-    <ul>
-      <li>Wrote a <span class="q">full automatic-differentiation engine from scratch</span>; earned 800 GitHub stars and a mention from the original author.</li>
-    </ul>
-  </div>
-
-  <h2>Experience</h2>
-  <div class="e">
-    <div class="e-top">
-      <div class="e-name">SWE Intern</div>
-      <div class="e-meta">Summer 2025</div>
-    </div>
-    <div class="e-sub">Ramp · Payments Infrastructure</div>
-    <ul>
-      <li>Shipped a webhook-retry system to production handling <span class="q">2M+ events/day</span> with zero data loss.</li>
-    </ul>
-  </div>
-
-  <h2>Stack</h2>
-  <div class="skills">
-    <div><span class="k">Languages</span> &nbsp; Python · TypeScript · Rust · C++ · Swift · SQL</div>
-    <div><span class="k">Ship Fast</span> &nbsp; React · Next.js · React Native · FastAPI · Node · Supabase · Postgres · Docker</div>
-    <div><span class="k">AI/ML</span> &nbsp; PyTorch · OpenAI · HuggingFace · RAG · pgvector · CUDA</div>
-  </div>
-</div>
-
-<div class="why">
-  <h3>Why this resume gets in everywhere</h3>
-  <div class="card"><b>Wins lead, and every win is quantified two ways.</b><span>Placement + field size ("1st / 1,200") and an impact number ("cut charting 63%"). Organizers trust ranks they can picture.</span></div>
-  <div class="card"><b>Every entry has a live demo or GitHub link.</b><span>A clickable, verifiable artifact beats any adjective. MLH explicitly says: pin these on your GitHub so judges can confirm you built them.</span></div>
-  <div class="card"><b>Strongest project is at the very top.</b><span>Recruiters and judges decide in 5&ndash;6 seconds. The best work cannot be in the middle.</span></div>
-  <div class="card"><b>Exact, recognizable tool names.</b><span>"OpenAI," "PyTorch," "pgvector" &mdash; sponsors literally scan for their tools to pick prize winners. Vague "ML frameworks" loses that match.</span></div>
-  <div class="card"><b>Range is on display.</b><span>An AI web app, a hardware hack, a from-scratch autograd engine. Breadth signals the candidate can win across multiple tracks.</span></div>
-  <div class="card"><b>One real technical flex.</b><span>The from-scratch autograd engine proves depth, not just gluing APIs together. It's the line that makes an engineer lean in.</span></div>
-  <div class="card"><b>A builder-identity tagline up top.</b><span>"I ship products that win" plus two numbers frames everything below it before a word of detail is read.</span></div>
-</div>
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv-el').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*40)+'ms';io.observe(el)});
+</script>
 
 </body>
 </html>
